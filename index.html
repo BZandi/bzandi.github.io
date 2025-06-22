@@ -2,86 +2,101 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <title>Seite im Aufbau</title>
+  <title>Website im Aufbau</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- DSGVO-freundlich: nur System-Schriften, keine externen Assets -->
+
+  <!-- DSGVO-freundlich: nur System-Schriften, keinerlei externe Assets -->
   <style>
-    :root {
-      --bg: #f7fafc;
-      --primary: #1e88e5;
-      --text: #1a202c;
-      --rope: #bdbdbd;
-      --seat: #8d6e63;
-      --radius: 10px;
+    :root{
+      --bg:       #f3f4f6;   /* hell-graues Grundlayout   */
+      --surface:  #ffffff;   /* Karten-/Container-Farbe    */
+      --primary:  #2563eb;   /* seriöses Blau              */
+      --text:     #1f2937;   /* fast schwarz               */
+      --muted:    #6b7280;   /* Sekundärtext               */
+      --radius:   12px;      /* abger. Ecken               */
+      --shadow:   0 4px 14px rgba(0,0,0,.06);
     }
-    *,*::before,*::after { box-sizing: border-box; margin:0; padding:0; }
+
+    *,*::before,*::after{box-sizing:border-box; margin:0; padding:0;}
 
     body{
-      min-height:100vh; display:flex; align-items:center; justify-content:center;
-      padding:2rem; background:var(--bg); color:var(--text);
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      padding:2rem;
+      background:var(--bg); color:var(--text);
       font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.6;
+    }
+
+    /* ---------- Karte ---------- */
+    .card{
+      width:100%; max-width:520px;
+      background:var(--surface);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:3rem 2.5rem 2.75rem;
       text-align:center;
     }
 
-    .container{max-width:600px;width:100%;}
-
-    h1{font-size:clamp(2rem,3vw+1rem,3rem);margin-bottom:1rem;}
-    p{margin-bottom:2.5rem;line-height:1.6;}
-
-    /* ─── CSS-Schaukel ───────────────────────────────────────────── */
-    .swing-wrapper{
-      width:220px; height:160px; margin:0 auto 2rem;
-      perspective:800px; /* leichter 3-D-Effekt */
-    }
-    .swing{
-      position:relative; width:100%; height:100%;
-      transform-origin:top center;
-      animation:swing 3.5s ease-in-out infinite;
-    }
-    .rope{
-      position:absolute; top:0; width:4px; height:120px; background:var(--rope);
-    }
-    .rope.left{left:calc(50% - 60px);}
-    .rope.right{right:calc(50% - 60px);}
-    .seat{
-      position:absolute; bottom:0; left:50%; transform:translateX(-50%);
-      width:120px; height:20px; background:var(--seat); border-radius:var(--radius);
-      display:flex; align-items:center; justify-content:space-around;
-      padding:0 .25rem; font-size:1.5rem; /* Emoji-Größe */
-      color:#fff;
+    h1{
+      font-size:clamp(1.75rem,3vw+1rem,2.5rem);
+      margin-bottom:1rem;
+      font-weight:600;
     }
 
-    @keyframes swing{
-      0%   { transform:rotate3d(1,0,0, 10deg); }
-      50%  { transform:rotate3d(1,0,0,-10deg); }
-      100% { transform:rotate3d(1,0,0, 10deg); }
-    }
+    p.lead{color:var(--muted); margin-bottom:2.5rem;}
 
-    footer{font-size:.875rem; opacity:.65;}
+    /* ---------- Loader ---------- */
+    .loader{
+      position:relative;
+      width:260px; height:8px; margin:0 auto 2.5rem;
+      border-radius:var(--radius);
+      background:#e5e7eb; /* ruhige Grundfläche */
+      overflow:hidden;
+    }
+    .loader::before{
+      content:"";
+      position:absolute; top:0; left:-260px;
+      width:260px; height:100%;
+      background:repeating-linear-gradient(
+                 135deg,
+                 transparent 0 20px,
+                 var(--primary) 20px 40px);
+      animation:progress 1.6s linear infinite;
+    }
+    @keyframes progress{to{transform:translateX(260px);}}
+
+    footer{
+      font-size:.875rem; color:var(--muted); margin-top:.5rem;
+    }
     footer a{color:inherit; text-decoration:underline;}
+
+    /* ---------- Responsives Finetuning ---------- */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#14181f;
+        --surface:#1e242e;
+        --text:#f3f4f6;
+        --muted:#9ca3af;
+        --shadow:0 4px 16px rgba(0,0,0,.4);
+      }
+      .loader{background:#374151;}
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Schaukel -->
-    <div class="swing-wrapper" aria-hidden="true">
-      <div class="swing">
-        <span class="rope left"></span>
-        <span class="rope right"></span>
-        <div class="seat">
-          🐶 🐶
-        </div>
-      </div>
-    </div>
+  <main class="card" role="main">
+    <h1>Website im Aufbau</h1>
+    <p class="lead">Wir arbeiten an etwas Großartigem&nbsp;&ndash; schau bald wieder vorbei.</p>
 
-    <h1>Diese Seite entsteht gerade</h1>
-    <p>Schau bald wieder vorbei – die Hunde haben noch zu tun!</p>
+    <!-- dezenter Ladebalken -->
+    <div class="loader" aria-hidden="true"></div>
 
     <footer>
-      © 2025 <span class="placeholder">Babak&nbsp;Zandi</span> ·
+      © 2025&nbsp;Babak&nbsp;Zandi ·
       <a href="imprint.html">Kontakt</a> ·
       <a href="privacy.html">Datenschutz</a>
     </footer>
-  </div>
+  </main>
 </body>
 </html>
