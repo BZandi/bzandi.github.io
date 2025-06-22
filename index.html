@@ -4,55 +4,78 @@
   <meta charset="utf-8" />
   <title>Seite im Aufbau</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- DSGVO‑freundlich: keine externen Fonts → System‑Schrift -->
+  <!-- DSGVO-freundlich: nur System-Schriften, keine externen Assets -->
   <style>
     :root {
       --bg: #f7fafc;
       --primary: #1e88e5;
       --text: #1a202c;
-      --crane: #9e9e9e;
+      --rope: #bdbdbd;
+      --seat: #8d6e63;
       --radius: 10px;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,*::before,*::after { box-sizing: border-box; margin:0; padding:0; }
 
-    body {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      padding: 2rem; background: var(--bg); color: var(--text);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      text-align: center;
+    body{
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+      padding:2rem; background:var(--bg); color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      text-align:center;
     }
 
-    .container { max-width: 600px; width: 100%; }
+    .container{max-width:600px;width:100%;}
 
-    h1 { font-size: clamp(2rem, 3vw + 1rem, 3rem); margin-bottom: 1rem; }
-    p { margin-bottom: 2.5rem; line-height: 1.6; }
+    h1{font-size:clamp(2rem,3vw+1rem,3rem);margin-bottom:1rem;}
+    p{margin-bottom:2.5rem;line-height:1.6;}
 
-    /* ─── simple CSS-only crane animation ─────────────────────────── */
-    .crane { position: relative; width: 220px; height: 160px; margin: 0 auto 2rem; }
-    .crane__mast { position: absolute; bottom: 0; left: 40px; width: 10px; height: 100%; background: var(--crane); }
-    .crane__arm { position: absolute; top: 20px; left: 40px; width: 160px; height: 10px; background: var(--crane); }
-    .crane__rope { position: absolute; top: 20px; left: 180px; width: 2px; height: 100px; background: var(--crane); animation: drop 4s ease-in-out infinite; transform-origin: top; }
-    .crane__block { position: absolute; bottom: 0; left: -18px; width: 36px; height: 36px; background: var(--primary); color: #fff; font-weight: 600; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); animation: bounce 4s ease-in-out infinite; animation-delay: 1.2s; }
+    /* ─── CSS-Schaukel ───────────────────────────────────────────── */
+    .swing-wrapper{
+      width:220px; height:160px; margin:0 auto 2rem;
+      perspective:800px; /* leichter 3-D-Effekt */
+    }
+    .swing{
+      position:relative; width:100%; height:100%;
+      transform-origin:top center;
+      animation:swing 3.5s ease-in-out infinite;
+    }
+    .rope{
+      position:absolute; top:0; width:4px; height:120px; background:var(--rope);
+    }
+    .rope.left{left:calc(50% - 60px);}
+    .rope.right{right:calc(50% - 60px);}
+    .seat{
+      position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+      width:120px; height:20px; background:var(--seat); border-radius:var(--radius);
+      display:flex; align-items:center; justify-content:space-around;
+      padding:0 .25rem; font-size:1.5rem; /* Emoji-Größe */
+      color:#fff;
+    }
 
-    @keyframes drop { 0% { height: 10px; } 40% { height: 100px; } 60% { height: 100px; } 100% { height: 10px; } }
-    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    @keyframes swing{
+      0%   { transform:rotate3d(1,0,0, 10deg); }
+      50%  { transform:rotate3d(1,0,0,-10deg); }
+      100% { transform:rotate3d(1,0,0, 10deg); }
+    }
 
-    footer { font-size: 0.875rem; opacity: 0.65; }
-    footer a { color: inherit; text-decoration: underline; }
+    footer{font-size:.875rem; opacity:.65;}
+    footer a{color:inherit; text-decoration:underline;}
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="crane" aria-hidden="true">
-      <div class="crane__mast"></div>
-      <div class="crane__arm"></div>
-      <div class="crane__rope">
-        <div class="crane__block">Z</div>
+    <!-- Schaukel -->
+    <div class="swing-wrapper" aria-hidden="true">
+      <div class="swing">
+        <span class="rope left"></span>
+        <span class="rope right"></span>
+        <div class="seat">
+          🐶 🐶
+        </div>
       </div>
     </div>
 
     <h1>Diese Seite entsteht gerade</h1>
-    <p>Schau bald wieder vorbei!</p>
+    <p>Schau bald wieder vorbei – die Hunde haben noch zu tun!</p>
 
     <footer>
       © 2025 <span class="placeholder">Babak&nbsp;Zandi</span> ·
