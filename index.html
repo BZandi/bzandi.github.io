@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8" />
-  <title>Site under construction</title>
+  <title>Seite im Aufbau</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- GDPR‑friendly: no external font calls → uses system fonts only -->
+  <!-- DSGVO‑freundlich: keine externen Fonts → System‑Schrift -->
   <style>
     :root {
       --bg: #f7fafc;
@@ -13,127 +13,32 @@
       --crane: #9e9e9e;
       --radius: 10px;
     }
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      background: var(--bg);
-      color: var(--text);
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 2rem; background: var(--bg); color: var(--text);
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       text-align: center;
     }
 
-    .container {
-      max-width: 600px;
-      width: 100%;
-    }
+    .container { max-width: 600px; width: 100%; }
 
-    h1 {
-      font-size: clamp(2rem, 3vw + 1rem, 3rem);
-      margin-bottom: 1rem;
-    }
-
-    p {
-      margin-bottom: 2.5rem;
-      line-height: 1.6;
-    }
+    h1 { font-size: clamp(2rem, 3vw + 1rem, 3rem); margin-bottom: 1rem; }
+    p { margin-bottom: 2.5rem; line-height: 1.6; }
 
     /* ─── simple CSS-only crane animation ─────────────────────────── */
-    .crane {
-      position: relative;
-      width: 220px;
-      height: 160px;
-      margin: 0 auto 2rem;
-    }
+    .crane { position: relative; width: 220px; height: 160px; margin: 0 auto 2rem; }
+    .crane__mast { position: absolute; bottom: 0; left: 40px; width: 10px; height: 100%; background: var(--crane); }
+    .crane__arm { position: absolute; top: 20px; left: 40px; width: 160px; height: 10px; background: var(--crane); }
+    .crane__rope { position: absolute; top: 20px; left: 180px; width: 2px; height: 100px; background: var(--crane); animation: drop 4s ease-in-out infinite; transform-origin: top; }
+    .crane__block { position: absolute; bottom: 0; left: -18px; width: 36px; height: 36px; background: var(--primary); color: #fff; font-weight: 600; display: flex; align-items: center; justify-content: center; border-radius: var(--radius); animation: bounce 4s ease-in-out infinite; animation-delay: 1.2s; }
 
-    .crane__mast {
-      position: absolute;
-      bottom: 0;
-      left: 40px;
-      width: 10px;
-      height: 100%;
-      background: var(--crane);
-    }
+    @keyframes drop { 0% { height: 10px; } 40% { height: 100px; } 60% { height: 100px; } 100% { height: 10px; } }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
-    .crane__arm {
-      position: absolute;
-      top: 20px;
-      left: 40px;
-      width: 160px;
-      height: 10px;
-      background: var(--crane);
-    }
-
-    .crane__rope {
-      position: absolute;
-      top: 20px;
-      left: 180px;
-      width: 2px;
-      height: 100px;
-      background: var(--crane);
-      animation: drop 4s ease-in-out infinite;
-      transform-origin: top;
-    }
-
-    .crane__block {
-      position: absolute;
-      bottom: 0;
-      left: -18px;
-      width: 36px;
-      height: 36px;
-      background: var(--primary);
-      color: #fff;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius);
-      animation: bounce 4s ease-in-out infinite;
-      animation-delay: 1.2s;
-    }
-
-    @keyframes drop {
-      0% {
-        height: 10px;
-      }
-      40% {
-        height: 100px;
-      }
-      60% {
-        height: 100px;
-      }
-      100% {
-        height: 10px;
-      }
-    }
-
-    @keyframes bounce {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-6px);
-      }
-    }
-
-    footer {
-      font-size: 0.875rem;
-      opacity: 0.65;
-    }
-
-    footer a {
-      color: inherit;
-      text-decoration: underline;
-    }
+    footer { font-size: 0.875rem; opacity: 0.65; }
+    footer a { color: inherit; text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -146,13 +51,13 @@
       </div>
     </div>
 
-    <h1>This site is taking shape</h1>
-    <p>Stay tuned.</p>
+    <h1>Diese Seite entsteht gerade</h1>
+    <p>Schau bald wieder vorbei!</p>
 
     <footer>
       © 2025 <span class="placeholder">Babak&nbsp;Zandi</span> ·
-      <a href="imprint.html">Imprint</a> ·
-      <a href="privacy.html">Privacy&nbsp;Policy</a>
+      <a href="imprint.html">Kontakt</a> ·
+      <a href="privacy.html">Datenschutz</a>
     </footer>
   </div>
 </body>
