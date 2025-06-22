@@ -1,52 +1,45 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Website im Aufbau</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Schriftart -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <title>Imprint</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root{
-      --bg:#f5f7fa;
-      --primary:#0a84ff;
-      --text:#1d1f21;
-      --radius:8px;
+    :root {
+      --bg: #f7fafc;
+      --text: #1a202c;
+      --primary: #1e88e5;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    body{
-      display:flex;align-items:center;justify-content:center;
-      min-height:100vh;padding:1rem;
-      background:var(--bg);color:var(--text);
-      font-family:'Inter',system-ui,sans-serif;text-align:center;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 2rem; background: var(--bg); color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
-    .card{
-      max-width:420px;width:100%;
-      background:#fff;border-radius:var(--radius);
-      padding:3rem 2rem;
-      box-shadow:0 8px 24px rgba(0,0,0,.06);
-    }
-    h1{
-      font-size:clamp(1.75rem,3vw+1rem,2.5rem);
-      font-weight:600;line-height:1.2;margin-bottom:1rem;
-    }
-    p{line-height:1.5;margin-bottom:2rem;}
-    .spinner{
-      width:40px;height:40px;margin:0 auto;
-      border:4px solid transparent;border-top-color:var(--primary);
-      border-radius:50%;animation:spin 1s linear infinite;
-    }
-    @keyframes spin{to{transform:rotate(360deg);}}
-    footer{margin-top:2rem;font-size:.875rem;opacity:.6;}
+    main { max-width: 680px; width: 100%; }
+    h1 { font-size: clamp(2rem, 3vw + 1rem, 3rem); margin-bottom: 1.5rem; text-align: center; }
+    ul { margin-bottom: 1.5rem; list-style: none; line-height: 1.6; }
+    li + li { margin-top: .5rem; }
+    a { color: var(--primary); }
+    footer { margin-top: 2rem; text-align: center; font-size: .875rem; }
   </style>
 </head>
 <body>
-  <main class="card">
-    <h1>Diese Seite wird gerade aufgebaut</h1>
-    <p>Wir feilen noch an den letzten Details – schau bald wieder vorbei!</p>
-    <div class="spinner" aria-hidden="true"></div>
-    <footer>&copy; 2025 Dein Name</footer>
+  <main>
+    <h1>Imprint</h1>
+    <p>This private website is operated by:</p>
+    <ul>
+      <li><strong>Name:</strong> <span class="placeholder">Your full name</span></li>
+      <li><strong>Address:</strong> <span class="placeholder">Street&nbsp;address, Postal code&nbsp;&amp;&nbsp;City, Country</span></li>
+      <li><strong>Email:</strong> <a href="mailto:you@example.com">you@example.com</a></li>
+    </ul>
+
+    <p>Responsible for content according to §&nbsp;55&nbsp;Abs.&nbsp;1 RStV: <span class="placeholder">Your full name</span>.</p>
+    <p>This non‑commercial website is created and maintained for personal purposes only.</p>
+
+    <footer>
+      <a href="index.html">← Back to home</a>
+    </footer>
   </main>
 </body>
 </html>
